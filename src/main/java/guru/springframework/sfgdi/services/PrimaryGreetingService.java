@@ -5,9 +5,14 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by jt on 12/27/19.
+ * We removed
+ * @Primary
+ * @Service
+ * and add this clas file in GreetingServicesConfig
+ *
+ *
  */
-@Primary
-@Service
+
 public class PrimaryGreetingService implements GreetingService {
 
     @Override

@@ -5,9 +5,15 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by jt on 12/27/19.
+ *
+ *  Gavin Hashemi:
+ *
+ *  We removed
+ *  @Profile("EN")
+ * @Service("i18nService")
+ *  and mored them to the config class file GreetingServicesConfig
  */
-@Profile("EN")
-@Service("i18nService")
+
 public class I18nEnglishGreetingService implements GreetingService {
     @Override
     public String sayGreeting() {

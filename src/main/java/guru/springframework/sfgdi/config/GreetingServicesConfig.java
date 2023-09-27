@@ -1,10 +1,11 @@
 package guru.springframework.sfgdi.config;
 
-import guru.springframework.sfgdi.services.ConstructorGreetingService;
-import guru.springframework.sfgdi.services.PropertyInjectedGreetingService;
-import guru.springframework.sfgdi.services.SetterInjectedGreetingService;
+import guru.springframework.sfgdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 /**
  * @author gavinhashemi on 2023-09-27
@@ -14,6 +15,33 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class GreetingServicesConfig {
+
+    @Profile({"ES", "default"})
+    @Bean("i18nService")
+    I18NSpanishService i18NSpanishService (){
+        return new I18NSpanishService();
+    }
+
+    @Profile("EN")
+    @Bean
+    I18nEnglishGreetingService i18nService(){
+        return new I18nEnglishGreetingService();
+    }
+
+
+
+    /*
+    This is the primary bean
+     */
+
+    @Bean
+    @Primary
+    PrimaryGreetingService primaryGreetingService(){
+        return new PrimaryGreetingService();
+    }
+
+
+
     /*
     *  This is more traditional use to call a third party object.
      */
